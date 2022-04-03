@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -107,4 +108,10 @@ public class AuthController {
         return new ResponseEntity(new MessageResponse("User Registered Successfully"), HttpStatus.CREATED);
     }
 
+    @GetMapping("/test/{username}")
+    ResponseEntity<Optional> testUser(@PathVariable String username){
+        return new ResponseEntity<Optional>(repository.findUserByName(username), HttpStatus.OK);
+
+
+    }
 }
