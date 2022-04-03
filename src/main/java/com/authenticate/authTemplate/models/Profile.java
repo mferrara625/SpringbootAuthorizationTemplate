@@ -3,6 +3,7 @@ package com.authenticate.authTemplate.models;
 import com.authenticate.authTemplate.auth.User;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Profile {
@@ -13,6 +14,8 @@ public class Profile {
 
     private String name;
     private String description;
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    private List<Content> content;
 
 
     @OneToOne
@@ -62,5 +65,13 @@ public class Profile {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public List<Content> getContent() {
+        return content;
+    }
+
+    public void setContent(List<Content> content) {
+        this.content = content;
     }
 }

@@ -110,7 +110,7 @@ public class AuthController {
 
     @GetMapping("/test/{username}")
     ResponseEntity<Optional> testUser(@PathVariable String username){
-        return new ResponseEntity<Optional>(repository.findUserByName(username), HttpStatus.OK);
+        return new ResponseEntity<>(repository.findUserByName(username), HttpStatus.OK);
 
 
     }
